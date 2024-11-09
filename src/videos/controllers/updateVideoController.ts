@@ -6,12 +6,12 @@ export const updateVideoController = (req: Request, res: Response) => {
   const id = Number(req.params.id);
   const video = req.body;
 
-  const errors = validateVideoFields(video);
+  const errorsMessages = validateVideoFields(video);
 
-  if (errors.length) {
+  if (errorsMessages.length) {
     res
       .status(400)
-      .json(errors);
+      .json({ errorsMessages });
   }
 
   const isUpdated = db.update(id, video);

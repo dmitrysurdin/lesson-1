@@ -20,8 +20,6 @@ export const validateVideoFields = (video: Omit<Video, 'id' | 'createdAt'>): Arr
       field: 'title',
       message: 'title field is not correct'
     });
-
-    return errorsMessages;
   }
 
   if (!isValidAuthor(video.author)) {
@@ -29,8 +27,6 @@ export const validateVideoFields = (video: Omit<Video, 'id' | 'createdAt'>): Arr
       field: 'author',
       message: 'author field is not correct'
     });
-
-    return errorsMessages;
   }
 
   if (!isValidResolution(video.availableResolutions)) {
@@ -38,8 +34,6 @@ export const validateVideoFields = (video: Omit<Video, 'id' | 'createdAt'>): Arr
       field: 'availableResolutions',
       message: 'availableResolutions field is not correct'
     });
-
-    return errorsMessages;
   }
 
   if (!isValidCanBeDownloaded(video?.canBeDownloaded)) {
@@ -47,8 +41,6 @@ export const validateVideoFields = (video: Omit<Video, 'id' | 'createdAt'>): Arr
       field: 'canBeDownloaded',
       message: 'canBeDownloaded field is not correct'
     });
-
-    return errorsMessages;
   }
 
   if (!isValidMinAgeRestriction(video?.minAgeRestriction)) {
@@ -56,8 +48,6 @@ export const validateVideoFields = (video: Omit<Video, 'id' | 'createdAt'>): Arr
       field: 'minAgeRestriction',
       message: 'minAgeRestriction field is not correct'
     });
-
-    return errorsMessages;
   }
 
   if (!isValidPublicationDate(video?.publicationDate)) {
@@ -65,8 +55,6 @@ export const validateVideoFields = (video: Omit<Video, 'id' | 'createdAt'>): Arr
       field: 'publicationDate',
       message: 'publicationDate field is not correct'
     });
-
-    return errorsMessages;
   }
 
   return errorsMessages;
