@@ -33,12 +33,13 @@ export const isValidMinAgeRestriction = (minAgeRestriction?: number | null) => {
 };
 
 export const isValidPublicationDate = (publicationDate?: string) => {
-  if(!publicationDate){
-    return true
+  if (!publicationDate) {
+    return true;
   }
 
+  const isoFormatRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/;
+
   return (
-    !isNaN(new Date(publicationDate).getTime())
+    !isNaN(new Date(publicationDate).getTime()) && isoFormatRegex.test(publicationDate)
   );
 };
-
