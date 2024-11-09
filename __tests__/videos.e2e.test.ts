@@ -25,8 +25,8 @@ describe('Video API e2e tests', () => {
   });
 
   it('should return all videos', async () => {
-    await request(app).post('/videos').send(video1);
-    await request(app).post('/videos').send(video2);
+    await request(app).post(SETTINGS.PATH.VIDEOS).send(video1);
+    await request(app).post(SETTINGS.PATH.VIDEOS).send(video2);
 
     const response = await request(app)
       .get(SETTINGS.PATH.VIDEOS)
@@ -88,7 +88,7 @@ describe('Video API e2e tests', () => {
   });
 
   it('should clear all videos', async () => {
-    await request(app).post('/videos').send(video1);
+    await request(app).post(SETTINGS.PATH.VIDEOS).send(video1);
 
     await request(app)
       .delete(`${SETTINGS.PATH.TESTING}/all-data`)
