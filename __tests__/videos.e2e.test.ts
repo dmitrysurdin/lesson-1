@@ -9,7 +9,7 @@ describe('Video API e2e tests', () => {
     db.clearDb();
   });
 
-  it('should create a new video', async () => {
+  it('POST should create a new video', async () => {
     const response = await request(app)
       .post(SETTINGS.PATH.VIDEOS)
       .send(videoToCreate)
@@ -24,7 +24,7 @@ describe('Video API e2e tests', () => {
     );
   });
 
-  it('should return all videos', async () => {
+  it('GET should return all videos', async () => {
     await request(app).post(SETTINGS.PATH.VIDEOS).send(video1);
     await request(app).post(SETTINGS.PATH.VIDEOS).send(video2);
 
@@ -35,7 +35,7 @@ describe('Video API e2e tests', () => {
     expect(response.body.length).toBe(2);
   });
 
-  it('should find a video by ID', async () => {
+  it('GET should find a video by ID', async () => {
     const createdVideo = await request(app)
       .post(SETTINGS.PATH.VIDEOS)
       .send(videoToCreate)
@@ -50,7 +50,7 @@ describe('Video API e2e tests', () => {
     expect(response.body).toEqual(expect.objectContaining(videoToCreate));
   });
 
-  it('should update a video', async () => {
+  it('PUT should update a video', async () => {
     const createdVideo = await request(app)
       .post(SETTINGS.PATH.VIDEOS)
       .send(videoToCreate)
@@ -70,7 +70,7 @@ describe('Video API e2e tests', () => {
     expect(response.body).toEqual(expect.objectContaining(videoToUpdate));
   });
 
-  it('should delete a video by ID', async () => {
+  it('DELETE should delete a video by ID', async () => {
     const createdVideo = await request(app)
       .post(SETTINGS.PATH.VIDEOS)
       .send(videoToCreate)
@@ -87,7 +87,7 @@ describe('Video API e2e tests', () => {
       .expect(404);
   });
 
-  it('should clear all videos', async () => {
+  it('DELETE should clear all videos', async () => {
     await request(app).post(SETTINGS.PATH.VIDEOS).send(video1);
 
     await request(app)
